@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Cute Website</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+      font-family: 'Pacifico', cursive;
+      color: #fff;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 3rem;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+      margin-bottom: 0.5rem;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    p {
+      font-size: 2rem;
+      margin-top: 0;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+      animation: floatText 3s ease-in-out infinite;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(-20px);}
+      100% { opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes floatText {
+      0%, 100% { transform: translateY(0);}
+      50% { transform: translateY(-10px);}
+    }
+
+    /* Optional: add cute floating hearts background */
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: rgba(255,255,255,0.7);
+      transform: rotate(45deg);
+      animation: floatHeart linear infinite;
+    }
+
+    @keyframes floatHeart {
+      0% { transform: translateY(100vh) rotate(45deg); opacity: 1; }
+      100% { transform: translateY(-50vh) rotate(45deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to My Website!</h1>
+  <p>hello boss,</p>
+
+  <!-- Background music -->
+  <audio autoplay loop controls style="display:none;" id="bg-music">
+    <source src="https://www.youtube.com/watch?v=gXdTr_bbc1M&list=RDgXdTr_bbc1M&start_radio=1" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    // iOS autoplay workaround
+    const audio = document.getElementById('bg-music');
+    document.body.addEventListener('click', () => {
+      audio.play();
+    });
+
+    // Optional: add floating hearts
+    for (let i = 0; i < 20; i++) {
+      let heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random()
